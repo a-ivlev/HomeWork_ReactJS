@@ -1,0 +1,6 @@
+.vscode/settings.json
+node_modules
+build
+package-lock.json
+.webpack.config.js.swp
+Example.jsx
