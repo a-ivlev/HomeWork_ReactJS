@@ -6,17 +6,8 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import EmailOutlinedIcon from '@material-ui/icons/EmailOutlined';
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    '& .MuiTextField-root': {
-      margin: theme.spacing(1),
-      width: '25ch',
-    },
-    '& > *': {
-        margin: theme.spacing(1),
-      },
-  },
-}));
+import '../styles/SendMessage.css'
+
 
 export default class SendMessage extends React.Component {
     state = {
@@ -33,11 +24,11 @@ export default class SendMessage extends React.Component {
         this.state.text = '';
     };  
 
-  componentDidUpdate(){
-       if(this.state.messages.length % 2){
+  componentDidUpdate(prevProps, prevState){
+       if(prevState.messages.length < this.state.messages.length &&
+        this.state.messages[this.state.messages.length - 1].author !== 'robot'){
            const timeout = setTimeout(() => {
                    this.setState({messages: [...this.state.messages, {message: 'Не приставай ко мне, я робот!', author: 'robot'}]});
-                   this.setState({timeout});
                }, 2000);        
         }
    }
@@ -49,21 +40,21 @@ export default class SendMessage extends React.Component {
 
   render() {
        return(
-        <>
+        <main>
            <MessageList messages={this.state.messages} />
             <TextField
                id="filled-textarea"
                 label="Сообщение"
                 placeholder="Введите текст"
                 multiline
-                rowsMax={4}
+                rowsMax={5}
                 fullWidth
                 margin="normal"
                 value={this.state.text}
                 onChange={this.change}
                 variant="filled"/>
             <Button onClick={this.send}><EmailOutlinedIcon />Отправить</Button>
-        </>
+        </main>
      );  
   }
 }
