@@ -34,7 +34,7 @@ export default class SendMessage extends React.Component {
    }
   
   componentWillUnmount(){
-       clearTimeout(this.state.timeout);
+       clearTimeout(timeout);
        this.setState({timeout: null});
    }
 
