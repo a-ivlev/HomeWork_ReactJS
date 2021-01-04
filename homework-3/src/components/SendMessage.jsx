@@ -53,7 +53,7 @@ export default class SendMessage extends React.Component {
                 value={this.state.text}
                 onChange={this.change}
                 variant="filled"/>
-            <Button onClick={this.send}><EmailOutlinedIcon />Отправить</Button>
+            <Button onClick={this.send}><EmailOutlinedIcon />&nbsp;Отправить</Button>
         </main>
      );  
   }
