@@ -20,10 +20,10 @@ export default class Layout extends React.Component {
        return(
         <>
          <Header chatId={ this.props.chatId }/>
-         <chat>
+         <div className="chat">
            <ChatList />
            <SendMessage chatId={ this.props.chatId }/>
-         </chat>
+         </div>
         </>
      );  
   }
